@@ -30,6 +30,10 @@ export class App extends Component {
   onFormSubmit = contact => {
     contact.id = shortid.generate();
 
+    if (this.state.contacts.some(el => el.name === contact.name)) {
+      alert(`Contact with name ${contact.name} already exists`);
+    }
+
     this.setState(({ contacts }) => ({
       contacts: [contact, ...contacts],
     }));
