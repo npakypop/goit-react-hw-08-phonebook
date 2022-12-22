@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Contact } from '../Contact/Contact';
 
 export const ContactList = ({ contacts, onDeleteContact }) => {
@@ -6,20 +7,26 @@ export const ContactList = ({ contacts, onDeleteContact }) => {
       <h2>Contacts</h2>
       <ul>
         {contacts.map(({ id, name, number }) => (
-          // <li key={id}>
-          //   <p>Name: {name}</p>
-          //   <p>Phone: {number}</p>
-          //   <button onClick={() => onDeleteContact(id)}>Delete contact</button>
-          // </li>
           <Contact
             key={id}
             id={id}
             name={name}
             number={number}
             onDeleteContact={onDeleteContact}
-          /> // почему сюда нельзя передать обьект целяком а потом в контакт его деструтриризовать
+          />
         ))}
       </ul>
     </>
   );
+};
+
+ContactList.propTypes = {
+  onDeleteContact: PropTypes.func.isRequired,
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
 };

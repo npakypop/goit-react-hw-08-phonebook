@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 export class AddForm extends Component {
@@ -13,7 +14,7 @@ export class AddForm extends Component {
     });
   };
 
-  addContact = event => {
+  addContactSubmit = event => {
     event.preventDefault();
 
     this.props.onFormSubmit(this.state);
@@ -30,7 +31,7 @@ export class AddForm extends Component {
     return (
       <>
         <h1>Phonebook</h1>
-        <form onSubmit={this.addContact}>
+        <form onSubmit={this.addContactSubmit}>
           <label>
             Name
             <input
@@ -61,3 +62,7 @@ export class AddForm extends Component {
     );
   }
 }
+
+AddForm.propTypes = {
+  onFormSubmit: PropTypes.func,
+};

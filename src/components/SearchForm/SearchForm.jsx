@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 export const SearchForm = ({ filter, changeFilter }) => {
   return (
     <>
@@ -13,4 +14,9 @@ export const SearchForm = ({ filter, changeFilter }) => {
       />
     </>
   );
+};
+
+SearchForm.propTypes = {
+  changeFilter: PropTypes.func.isRequired,
+  filter: PropTypes.string.isRequired,
 };
