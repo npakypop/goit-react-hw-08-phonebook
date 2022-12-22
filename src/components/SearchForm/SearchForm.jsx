@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
+import { Title, Input } from './SearchForm.styled';
+
 export const SearchForm = ({ filter, changeFilter }) => {
   return (
     <>
-      <h2>SearchForm</h2>
-      <input
+      <Title>SearchForm</Title>
+      <Input
         onChange={changeFilter}
         value={filter}
         type="text"

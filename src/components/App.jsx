@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import shortid from 'shortid';
+
 import { Section } from './Section/Section';
 import { AddForm } from './AddForm/AddForm';
 import { SearchForm } from './SearchForm/SearchForm';
 import { ContactList } from './ContactList/ContactList';
-import shortid from 'shortid';
 
 export class App extends Component {
   state = {
@@ -32,6 +33,7 @@ export class App extends Component {
 
     if (this.state.contacts.some(el => el.name === contact.name)) {
       alert(`Contact with name ${contact.name} already exists`);
+      return;
     }
 
     this.setState(({ contacts }) => ({
