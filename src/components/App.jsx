@@ -15,9 +15,18 @@ export class App extends Component {
     ],
     filter: '',
   };
+
+  deleteContact = contactId => {
+    console.log(contactId);
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
+
   changeFilter = event => {
     this.setState({ filter: event.target.value });
   };
+
   onFormSubmit = contact => {
     contact.id = shortid.generate();
 
@@ -26,14 +35,18 @@ export class App extends Component {
     }));
   };
 
-  render() {
-    const { filter, contacts } = this.state;
-
+  getFilteredContacts = () => {
+    const { contacts, filter } = this.state;
     const normalizedFilter = filter.toLowerCase();
-
-    const filteredContacts = contacts.filter(contact =>
+    return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
+  };
+
+  render() {
+    const { filter } = this.state;
+    const filteredContacts = this.getFilteredContacts();
+
     return (
       <>
         <Section>
@@ -43,7 +56,10 @@ export class App extends Component {
           <SearchForm filter={filter} changeFilter={this.changeFilter} />
         </Section>
         <Section>
-          <ContactList contacts={filteredContacts} />
+          <ContactList
+            contacts={filteredContacts}
+            onDeleteContact={this.deleteContact}
+          />
         </Section>
       </>
     );
