@@ -52,7 +52,7 @@ export class App extends Component {
   render() {
     const { filter } = this.state;
     const filteredContacts = this.getFilteredContacts();
-
+    //есть компонент секции который используется несколько раз, но я хочу для каждой секции задать отдельные стили, как так сделать
     return (
       <>
         <Section>
