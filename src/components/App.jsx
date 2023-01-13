@@ -6,6 +6,8 @@ import { ContactList } from './ContactList/ContactList';
 import { useSelector, useDispatch } from 'react-redux';
 import { filterContacts } from 'redux/filter/filterSlice';
 import { deleteContact } from 'redux/contacts/contactSlice';
+import shortid from 'shortid';
+import { addContact } from 'redux/contacts/contactSlice';
 
 export const App = () => {
   const contacts = useSelector(state => state.contacts.contacts);
@@ -32,10 +34,24 @@ export const App = () => {
 
   const filteredContacts = getFilteredContacts();
 
+  const onFormSubmit = contact => {
+    if (contacts.some(el => el.name === contact.name)) {
+      alert(`Contact with name ${contact.name} already exists`);
+      return;
+    }
+    const newContact = {
+      id: shortid.generate(),
+      name: contact.name,
+      number: contact.number,
+    };
+    const action = addContact(newContact);
+    dispatch(action);
+  };
+
   return (
     <>
       <Section>
-        <AddForm />
+        <AddForm onFormSubmit={onFormSubmit} />
       </Section>
       <Section>
         <SearchForm filter={filterValue} changeFilter={changeFilter} />
