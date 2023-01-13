@@ -1,10 +1,14 @@
 import PropTypes from 'prop-types';
+import shortid from 'shortid';
 import React, { useState } from 'react';
 import { Title, Form, Input, Button, Label } from './AddForm.styled';
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/contacts/contactSlice';
 
-export const AddForm = ({ onFormSubmit }) => {
+export const AddForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const dispatch = useDispatch();
 
   const inputChange = event => {
     const { name, value } = event.currentTarget;
@@ -20,15 +24,18 @@ export const AddForm = ({ onFormSubmit }) => {
     }
   };
 
-  const reset = () => {
-    setName('');
-    setNumber('');
-  };
-
   const addContactSubmit = event => {
     event.preventDefault();
-    onFormSubmit({ name, number });
-    reset();
+
+    const newContact = {
+      id: shortid.generate(),
+      name,
+      number,
+    };
+    const action = addContact(newContact);
+    dispatch(action);
+    setName('');
+    setNumber('');
   };
 
   return (
