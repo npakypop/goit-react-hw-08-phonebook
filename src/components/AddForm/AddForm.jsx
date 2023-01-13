@@ -5,7 +5,7 @@ import { Title, Form, Input, Button, Label } from './AddForm.styled';
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/contacts/contactSlice';
 
-export const AddForm = () => {
+export const AddForm = ({ onFormSubmit }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
@@ -26,14 +26,14 @@ export const AddForm = () => {
 
   const addContactSubmit = event => {
     event.preventDefault();
-
-    const newContact = {
-      id: shortid.generate(),
-      name,
-      number,
-    };
-    const action = addContact(newContact);
-    dispatch(action);
+    onFormSubmit({ name, number });
+    // const newContact = {
+    //   id: shortid.generate(),
+    //   name,
+    //   number,
+    // };
+    // const action = addContact(newContact);
+    // dispatch(action);
     setName('');
     setNumber('');
   };
