@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
-import shortid from 'shortid';
+// import shortid from 'shortid';
 import React, { useState } from 'react';
 import { Title, Form, Input, Button, Label } from './AddForm.styled';
-import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/contacts/contactSlice';
+// import { useDispatch } from 'react-redux';
+// import { addContact } from 'redux/contacts/contactSlice';
 
 export const AddForm = ({ onFormSubmit }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const inputChange = event => {
     const { name, value } = event.currentTarget;
