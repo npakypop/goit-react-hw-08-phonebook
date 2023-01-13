@@ -1,5 +1,4 @@
-import React /* , { useState, useEffect } */ from 'react';
-
+import React from 'react';
 import { Section } from './Section/Section';
 import { AddForm } from './AddForm/AddForm';
 import { SearchForm } from './SearchForm/SearchForm';
@@ -11,7 +10,6 @@ import { deleteContact } from 'redux/contacts/contactSlice';
 export const App = () => {
   const contacts = useSelector(state => state.contacts.contacts);
   const filterValue = useSelector(state => state.filter.filter);
-  console.log('filterValue', filterValue);
   const dispatch = useDispatch();
 
   const onDeleteContact = contactId => {
@@ -33,10 +31,6 @@ export const App = () => {
   };
 
   const filteredContacts = getFilteredContacts();
-
-  // const filteredContacts = contacts.filter(contact =>
-  //   contact.name.trim().toLowerCase().includes(filterValue.trim().toLowerCase())
-  // );
 
   return (
     <>

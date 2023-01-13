@@ -9,7 +9,6 @@ const contactsSlice = createSlice({
         alert(`Contact with name ${payload.name} already exists`);
         return state;
       }
-
       state.contacts = [...state.contacts, payload];
     },
     deleteContact(state, { payload }) {
