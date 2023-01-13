@@ -1,60 +1,55 @@
-import React, { useState, useEffect } from 'react';
-import shortid from 'shortid';
+import React /* , { useState, useEffect } */ from 'react';
+
 import { Section } from './Section/Section';
 import { AddForm } from './AddForm/AddForm';
 import { SearchForm } from './SearchForm/SearchForm';
 import { ContactList } from './ContactList/ContactList';
+import { useSelector, useDispatch } from 'react-redux';
+import { filterContacts } from 'redux/filter/filterSlice';
+import { deleteContact } from 'redux/contacts/contactSlice';
 
 export const App = () => {
-  const [contacts, setContacts] = useState(
-    () => JSON.parse(localStorage.getItem('contacts')) || []
-  );
-  const [filter, setFilter] = useState('');
+  const contacts = useSelector(state => state.contacts.contacts);
+  const filterValue = useSelector(state => state.filter.filter);
+  console.log('filterValue', filterValue);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
-
-  const deleteContact = contactId => {
-    setContacts(contacts.filter(contact => contact.id !== contactId));
+  const onDeleteContact = contactId => {
+    const action = deleteContact(contactId);
+    dispatch(action);
   };
 
-  const changeFilter = event => {
-    setFilter(event.target.value);
-  };
-
-  const onFormSubmit = contact => {
-    contact.id = shortid.generate();
-
-    if (contacts.some(el => el.name === contact.name)) {
-      alert(`Contact with name ${contact.name} already exists`);
-      return;
-    }
-
-    setContacts([contact, ...contacts]);
+  const changeFilter = value => {
+    dispatch(filterContacts(value));
   };
 
   const getFilteredContacts = () => {
-    const normalizedFilter = filter.toLowerCase();
     return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter)
+      contact.name
+        .trim()
+        .toLowerCase()
+        .includes(filterValue.trim().toLowerCase())
     );
   };
 
   const filteredContacts = getFilteredContacts();
 
+  // const filteredContacts = contacts.filter(contact =>
+  //   contact.name.trim().toLowerCase().includes(filterValue.trim().toLowerCase())
+  // );
+
   return (
     <>
       <Section>
-        <AddForm onFormSubmit={onFormSubmit} />
+        <AddForm />
       </Section>
       <Section>
-        <SearchForm filter={filter} changeFilter={changeFilter} />
+        <SearchForm filter={filterValue} changeFilter={changeFilter} />
       </Section>
       <Section>
         <ContactList
           contacts={filteredContacts}
-          onDeleteContact={deleteContact}
+          onDeleteContact={onDeleteContact}
         />
       </Section>
     </>

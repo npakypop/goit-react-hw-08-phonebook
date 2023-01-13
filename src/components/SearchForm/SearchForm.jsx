@@ -6,7 +6,7 @@ export const SearchForm = ({ filter, changeFilter }) => {
     <>
       <Title>SearchForm</Title>
       <Input
-        onChange={changeFilter}
+        onChange={event => changeFilter(event.target.value)}
         value={filter}
         type="text"
         name="name"
