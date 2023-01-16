@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { Section } from './Section/Section';
 import { AddForm } from './AddForm/AddForm';
 import { SearchForm } from './SearchForm/SearchForm';
@@ -8,58 +9,68 @@ import { filterContacts } from 'redux/filter/filterSlice';
 import { deleteContact } from 'redux/contacts/contactSlice';
 import shortid from 'shortid';
 import { addContact } from 'redux/contacts/contactSlice';
+import { fetchContacts } from 'redux/operations';
 
 export const App = () => {
-  const contacts = useSelector(state => state.contacts.contacts);
-  const filterValue = useSelector(state => state.filter.filter);
+  const { items, isLoading, error } = useSelector(
+    state => state.contacts.contacts
+  );
   const dispatch = useDispatch();
 
-  const onDeleteContact = contactId => {
-    const action = deleteContact(contactId);
-    dispatch(action);
-  };
+  // const filterValue = useSelector(state => state.filter.filter);
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
-  const changeFilter = value => {
-    dispatch(filterContacts(value));
-  };
+  // const onDeleteContact = contactId => {
+  //   const action = deleteContact(contactId);
+  //   dispatch(action);
+  // };
 
-  const getFilteredContacts = () => {
-    return contacts.filter(contact =>
-      contact.name
-        .trim()
-        .toLowerCase()
-        .includes(filterValue.trim().toLowerCase())
-    );
-  };
+  // const changeFilter = value => {
+  //   dispatch(filterContacts(value));
+  // };
 
-  const filteredContacts = getFilteredContacts();
+  // const getFilteredContacts = () => {
+  //   return items.filter(contact =>
+  //     contact.name
+  //       .trim()
+  //       .toLowerCase()
+  //       .includes(filterValue.trim().toLowerCase())
+  //   );
+  // };
 
-  const onFormSubmit = contact => {
-    if (contacts.some(el => el.name === contact.name)) {
-      alert(`Contact with name ${contact.name} already exists`);
-      return;
-    }
-    const newContact = {
-      id: shortid.generate(),
-      name: contact.name,
-      number: contact.number,
-    };
-    const action = addContact(newContact);
-    dispatch(action);
-  };
+  // const filteredContacts = getFilteredContacts();
+
+  // const onFormSubmit = contact => {
+  //   if (items.some(el => el.name === contact.name)) {
+  //     alert(`Contact with name ${contact.name} already exists`);
+  //     return;
+  //   }
+  //   const newContact = {
+  //     id: shortid.generate(),
+  //     name: contact.name,
+  //     number: contact.number,
+  //   };
+  //   const action = addContact(newContact);
+  //   dispatch(action);
+  // };
 
   return (
     <>
-      <Section>
+      {/* <Section>
         <AddForm onFormSubmit={onFormSubmit} />
       </Section>
       <Section>
         <SearchForm filter={filterValue} changeFilter={changeFilter} />
-      </Section>
+      </Section> */}
       <Section>
+        {isLoading && <p>Loading tasks...</p>}
+        {error && <p>{error}</p>}
         <ContactList
-          contacts={filteredContacts}
-          onDeleteContact={onDeleteContact}
+          // contacts={filteredContacts}
+          contacts={items}
+          // onDeleteContact={onDeleteContact}
         />
       </Section>
     </>

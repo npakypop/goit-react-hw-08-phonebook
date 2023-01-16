@@ -5,7 +5,7 @@ export const Section = ({ children }) => {
   return <Wrapper>{children}</Wrapper>;
 };
 
-Section.propTypes = {
-  title: PropTypes.string,
-  children: PropTypes.element,
-};
+// Section.propTypes = {
+//   title: PropTypes.string,
+//   children: PropTypes.element,
+// };
