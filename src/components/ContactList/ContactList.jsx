@@ -7,12 +7,12 @@ export const ContactList = ({ contacts, onDeleteContact }) => {
     <>
       <Title>Contacts</Title>
       <List>
-        {contacts.map(({ id, name, number }) => (
+        {contacts.map(({ id, name, phone }) => (
           <Contact
             key={id}
             id={id}
             name={name}
-            number={number}
+            phone={phone}
             onDeleteContact={onDeleteContact}
           />
         ))}
@@ -27,7 +27,7 @@ ContactList.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
+      phone: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
 };

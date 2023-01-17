@@ -8,7 +8,6 @@ import { Title, Form, Input, Button, Label } from './AddForm.styled';
 export const AddForm = ({ onFormSubmit }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  // const dispatch = useDispatch();
 
   const inputChange = event => {
     const { name, value } = event.currentTarget;
@@ -27,13 +26,6 @@ export const AddForm = ({ onFormSubmit }) => {
   const addContactSubmit = event => {
     event.preventDefault();
     onFormSubmit({ name, number });
-    // const newContact = {
-    //   id: shortid.generate(),
-    //   name,
-    //   number,
-    // };
-    // const action = addContact(newContact);
-    // dispatch(action);
     setName('');
     setNumber('');
   };
