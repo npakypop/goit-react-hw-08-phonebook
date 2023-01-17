@@ -6,10 +6,11 @@ import { SearchForm } from './SearchForm/SearchForm';
 import { ContactList } from './ContactList/ContactList';
 import { useSelector, useDispatch } from 'react-redux';
 import { filterContacts } from 'redux/filter/filterSlice';
-import { deleteContact } from 'redux/contacts/contactSlice';
 import shortid from 'shortid';
-import { addContact } from 'redux/contacts/contactSlice';
-import { fetchContacts } from 'redux/operations';
+// import { deleteContact } from 'redux/contacts/contactSlice';
+// import { addContact } from 'redux/contacts/contactSlice';
+// import { addContact } from 'redux/operations';
+import { fetchContacts, deleteContact, addContact } from 'redux/operations';
 
 export const App = () => {
   const { items, isLoading, error } = useSelector(
@@ -17,60 +18,59 @@ export const App = () => {
   );
   const dispatch = useDispatch();
 
-  // const filterValue = useSelector(state => state.filter.filter);
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  // const onDeleteContact = contactId => {
-  //   const action = deleteContact(contactId);
-  //   dispatch(action);
-  // };
+  const filterValue = useSelector(state => state.filter.filter);
+  const onDeleteContact = contactId => {
+    const action = deleteContact(contactId);
+    dispatch(action);
+  };
 
-  // const changeFilter = value => {
-  //   dispatch(filterContacts(value));
-  // };
+  const changeFilter = value => {
+    dispatch(filterContacts(value));
+  };
 
-  // const getFilteredContacts = () => {
-  //   return items.filter(contact =>
-  //     contact.name
-  //       .trim()
-  //       .toLowerCase()
-  //       .includes(filterValue.trim().toLowerCase())
-  //   );
-  // };
+  const getFilteredContacts = () => {
+    return items.filter(contact =>
+      contact.name
+        .trim()
+        .toLowerCase()
+        .includes(filterValue.trim().toLowerCase())
+    );
+  };
 
-  // const filteredContacts = getFilteredContacts();
+  const filteredContacts = getFilteredContacts();
 
-  // const onFormSubmit = contact => {
-  //   if (items.some(el => el.name === contact.name)) {
-  //     alert(`Contact with name ${contact.name} already exists`);
-  //     return;
-  //   }
-  //   const newContact = {
-  //     id: shortid.generate(),
-  //     name: contact.name,
-  //     number: contact.number,
-  //   };
-  //   const action = addContact(newContact);
-  //   dispatch(action);
-  // };
+  const onFormSubmit = contact => {
+    if (items.some(el => el.name === contact.name)) {
+      alert(`Contact with name ${contact.name} already exists`);
+      return;
+    }
+    const newContact = {
+      id: shortid.generate(),
+      name: contact.name,
+      phone: contact.number,
+    };
+    const action = addContact(newContact);
+    dispatch(action);
+  };
 
   return (
     <>
-      {/* <Section>
+      <Section>
         <AddForm onFormSubmit={onFormSubmit} />
       </Section>
       <Section>
         <SearchForm filter={filterValue} changeFilter={changeFilter} />
-      </Section> */}
+      </Section>
       <Section>
         {isLoading && <p>Loading tasks...</p>}
         {error && <p>{error}</p>}
         <ContactList
-          // contacts={filteredContacts}
-          contacts={items}
-          // onDeleteContact={onDeleteContact}
+          contacts={filteredContacts}
+          onDeleteContact={onDeleteContact}
         />
       </Section>
     </>
