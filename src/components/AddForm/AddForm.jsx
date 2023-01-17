@@ -1,13 +1,14 @@
-import PropTypes from 'prop-types';
-// import shortid from 'shortid';
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+// import PropTypes from 'prop-types';
+import { addContact } from 'redux/operations';
 import { Title, Form, Input, Button, Label } from './AddForm.styled';
-// import { useDispatch } from 'react-redux';
-// import { addContact } from 'redux/contacts/contactSlice';
 
-export const AddForm = ({ onFormSubmit }) => {
+export const AddForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const dispatch = useDispatch();
+  const { items } = useSelector(state => state.contacts.contacts);
 
   const inputChange = event => {
     const { name, value } = event.currentTarget;
@@ -28,6 +29,19 @@ export const AddForm = ({ onFormSubmit }) => {
     onFormSubmit({ name, number });
     setName('');
     setNumber('');
+  };
+
+  const onFormSubmit = contact => {
+    if (items.some(el => el.name === contact.name)) {
+      alert(`Contact with name ${contact.name} already exists`);
+      return;
+    }
+    const newContact = {
+      name: contact.name,
+      phone: contact.number,
+    };
+    const action = addContact(newContact);
+    dispatch(action);
   };
 
   return (
@@ -64,6 +78,6 @@ export const AddForm = ({ onFormSubmit }) => {
   );
 };
 
-AddForm.propTypes = {
-  onFormSubmit: PropTypes.func,
-};
+// AddForm.propTypes = {
+//   onFormSubmit: PropTypes.func,
+// };
