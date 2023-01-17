@@ -6,10 +6,6 @@ import { SearchForm } from './SearchForm/SearchForm';
 import { ContactList } from './ContactList/ContactList';
 import { useSelector, useDispatch } from 'react-redux';
 import { filterContacts } from 'redux/filter/filterSlice';
-import shortid from 'shortid';
-// import { deleteContact } from 'redux/contacts/contactSlice';
-// import { addContact } from 'redux/contacts/contactSlice';
-// import { addContact } from 'redux/operations';
 import { fetchContacts, deleteContact, addContact } from 'redux/operations';
 
 export const App = () => {
@@ -49,7 +45,6 @@ export const App = () => {
       return;
     }
     const newContact = {
-      id: shortid.generate(),
       name: contact.name,
       phone: contact.number,
     };

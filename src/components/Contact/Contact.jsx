@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Item, Info, Button } from './Contact.styled';
 
-export const Contact = ({ name, number, id, onDeleteContact }) => {
+export const Contact = ({ name, phone, id, onDeleteContact }) => {
   return (
     <Item>
       <Info>
@@ -10,7 +10,7 @@ export const Contact = ({ name, number, id, onDeleteContact }) => {
       </Info>
       <Info>
         <strong>Phone: </strong>
-        {number}
+        {phone}
       </Info>
       <Button onClick={() => onDeleteContact(id)}>Delete contact</Button>
     </Item>
@@ -20,6 +20,6 @@ export const Contact = ({ name, number, id, onDeleteContact }) => {
 Contact.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
   onDeleteContact: PropTypes.func,
 };

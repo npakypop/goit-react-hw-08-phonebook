@@ -10,30 +10,7 @@ const contactsSlice = createSlice({
     },
     filter: '',
   },
-  // reducers: {
-  //   addContact(state, { payload }) {
-  //     state.contacts = [...state.contacts, payload];
-  //   },
-  //   deleteContact(state, { payload }) {
-  //     state.contacts = state.contacts.filter(contact => contact.id !== payload);
-  //   },
-  // },
-  //==============================================================
-  // reducers: {
-  //   fetchingInProgress(state) {
-  //     state.contacts.isLoading = true;
-  //   },
-  //   fetchingSuccess(state, action) {
-  //     state.contacts.isLoading = false;
-  //     state.contacts.error = null;
-  //     state.contacts.items = action.payload;
-  //   },
-  //   fetchingError(state, action) {
-  //     state.contacts.isLoading = false;
-  //     state.contacts.error = action.payload;
-  //   },
-  // },
-  //==================================================================
+
   extraReducers: {
     [fetchContacts.pending](state) {
       state.contacts.isLoading = true;
@@ -78,6 +55,6 @@ const contactsSlice = createSlice({
 });
 
 // export const { addContact, deleteContact } = contactsSlice.actions;
-export const { fetchingInProgress, fetchingSuccess, fetchingError } =
-  contactsSlice.actions;
+// export const { fetchingInProgress, fetchingSuccess, fetchingError } =
+//   contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
