@@ -2,17 +2,18 @@ import PropTypes from 'prop-types';
 import { Title, Input } from './SearchForm.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { filterContacts } from 'redux/filter/filterSlice';
+import { selectFilterValue } from 'redux/selectors';
 
 export const SearchForm = () => {
+  const filterValue = useSelector(selectFilterValue);
   const dispatch = useDispatch();
 
-  const filterValue = useSelector(state => state.filter.filter);
   const changeFilter = value => {
     dispatch(filterContacts(value));
   };
   return (
     <>
-      <Title>SearchForm</Title>
+      <Title>Search</Title>
       <Input
         onChange={event => changeFilter(event.target.value)}
         value={filterValue}

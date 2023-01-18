@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import PropTypes from 'prop-types';
 import { addContact } from 'redux/operations';
 import { Title, Form, Input, Button, Label } from './AddForm.styled';
+import { selectItems } from 'redux/selectors';
 
 export const AddForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const items = useSelector(selectItems);
   const dispatch = useDispatch();
-  const { items } = useSelector(state => state.contacts.contacts);
 
   const inputChange = event => {
     const { name, value } = event.currentTarget;
@@ -77,7 +77,3 @@ export const AddForm = () => {
     </>
   );
 };
-
-// AddForm.propTypes = {
-//   onFormSubmit: PropTypes.func,
-// };

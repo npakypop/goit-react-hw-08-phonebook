@@ -6,9 +6,11 @@ import { SearchForm } from './SearchForm/SearchForm';
 import { ContactList } from './ContactList/ContactList';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchContacts } from 'redux/operations';
+import { selectIsLoading, selectError } from 'redux/selectors';
 
 export const App = () => {
-  const { isLoading, error } = useSelector(state => state.contacts.contacts);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
   const dispatch = useDispatch();
 
   useEffect(() => {
