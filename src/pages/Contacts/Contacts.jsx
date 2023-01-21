@@ -7,7 +7,7 @@ import { fetchContacts } from 'redux/contacts/contactsOperations';
 import { selectIsLoading, selectError } from 'redux/selectors';
 import { useEffect } from 'react';
 
-const Ctcts = () => {
+const Contacts = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const dispatch = useDispatch();
@@ -33,4 +33,4 @@ const Ctcts = () => {
   );
 };
 
-export default Ctcts;
+export default Contacts;

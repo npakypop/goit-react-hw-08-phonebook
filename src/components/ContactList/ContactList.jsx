@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Contact } from '../Contact/Contact';
-import { Title, List } from './ContactsList.styled';
+// import { Title, List } from './ContactsList.styled';
 import { deleteContact } from 'redux/contacts/contactsOperations';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectItems, selectFilterValue } from 'redux/selectors';
@@ -28,29 +28,29 @@ export const ContactList = () => {
 
   return (
     <>
-      <Title>Contacts</Title>
-      <List>
-        {filteredContacts.map(({ id, name, phone }) => (
+      <h2>Contacts</h2>
+      <ul>
+        {filteredContacts.map(({ id, name, number }) => (
           <Contact
             key={id}
             id={id}
             name={name}
-            phone={phone}
+            phone={number}
             onDeleteContact={onDeleteContact}
           />
         ))}
-      </List>
+      </ul>
     </>
   );
 };
 
-ContactList.propTypes = {
-  onDeleteContact: PropTypes.func.isRequired,
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      phone: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
-};
+// ContactList.propTypes = {
+//   onDeleteContact: PropTypes.func.isRequired,
+//   contacts: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.string.isRequired,
+//       name: PropTypes.string.isRequired,
+//       phone: PropTypes.string.isRequired,
+//     }).isRequired
+//   ).isRequired,
+// };

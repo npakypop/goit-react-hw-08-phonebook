@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contacts/contactsOperations';
-import { Title, Form, Input, Button, Label } from './AddForm.styled';
+// import { Title, Form, Input, Button, Label } from './AddForm.styled';
 import { selectItems } from 'redux/selectors';
 
 export const AddForm = () => {
@@ -46,11 +46,11 @@ export const AddForm = () => {
 
   return (
     <>
-      <Title>Phonebook</Title>
-      <Form onSubmit={addContactSubmit}>
-        <Label>
+      <h1>Phonebook</h1>
+      <form onSubmit={addContactSubmit}>
+        <label>
           Name
-          <Input
+          <input
             value={name}
             onChange={inputChange}
             type="text"
@@ -59,10 +59,10 @@ export const AddForm = () => {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
-        </Label>
-        <Label>
+        </label>
+        <label>
           Phone Number
-          <Input
+          <input
             value={number}
             onChange={inputChange}
             type="tel"
@@ -71,9 +71,9 @@ export const AddForm = () => {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
-        </Label>
-        <Button type="submit">Add Contact</Button>
-      </Form>
+        </label>
+        <button type="submit">Add Contact</button>
+      </form>
     </>
   );
 };

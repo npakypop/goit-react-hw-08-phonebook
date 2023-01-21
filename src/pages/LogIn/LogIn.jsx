@@ -1,6 +1,6 @@
 import { LoginForm } from 'components/LogInForm/LogInForm';
 
-export default function Login() {
+const Login = () => {
   return (
     <div>
       <h2>Login</h2>
@@ -8,3 +8,4 @@ export default function Login() {
     </div>
   );
 }
+export default Login;

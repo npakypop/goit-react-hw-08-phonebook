@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-import { Title, Input } from './SearchForm.styled';
+// import { Title, Input } from './SearchForm.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { filterContacts } from 'redux/filter/filterSlice';
 import { selectFilterValue } from 'redux/selectors';
@@ -13,8 +12,8 @@ export const SearchForm = () => {
   };
   return (
     <>
-      <Title>Search</Title>
-      <Input
+      <h2>Search</h2>
+      <input
         onChange={event => changeFilter(event.target.value)}
         value={filterValue}
         type="text"
@@ -25,9 +24,4 @@ export const SearchForm = () => {
       />
     </>
   );
-};
-
-SearchForm.propTypes = {
-  changeFilter: PropTypes.func.isRequired,
-  filter: PropTypes.string.isRequired,
 };
