@@ -3,11 +3,11 @@ import { AddForm } from '../../components/AddForm/AddForm';
 import { SearchForm } from '../../components/SearchForm/SearchForm';
 import { ContactList } from '../../components/ContactList/ContactList';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { fetchContacts } from 'redux/contacts/contactsOperations';
 import { selectIsLoading, selectError } from 'redux/selectors';
-import { fetchContacts } from 'redux/operations';
+import { useEffect } from 'react';
 
-export const Contacts = () => {
+const Ctcts = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const dispatch = useDispatch();
@@ -15,8 +15,9 @@ export const Contacts = () => {
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
+
   return (
-    <>
+    <div>
       <Section>
         <AddForm />
       </Section>
@@ -28,6 +29,8 @@ export const Contacts = () => {
         {error && <p>{error}</p>}
         <ContactList />
       </Section>
-    </>
+    </div>
   );
 };
+
+export default Ctcts;

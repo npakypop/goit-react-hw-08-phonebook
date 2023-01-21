@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Contact } from '../Contact/Contact';
 import { Title, List } from './ContactsList.styled';
-import { deleteContact } from 'redux/operations';
+import { deleteContact } from 'redux/contacts/contactsOperations';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectItems, selectFilterValue } from 'redux/selectors';
 
