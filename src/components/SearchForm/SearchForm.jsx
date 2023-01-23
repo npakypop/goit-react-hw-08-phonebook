@@ -1,4 +1,3 @@
-// import { Title, Input } from './SearchForm.styled';
 import { Container, TextField, Typography } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import { filterContacts } from 'redux/filter/filterSlice';

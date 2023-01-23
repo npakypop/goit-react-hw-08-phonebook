@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { selectIsLoggedIn } from 'redux/selectors';
 import { useSelector } from 'react-redux';
-import { AppBar, Box, Button, Container } from '@mui/material';
+import { Box, Button } from '@mui/material';
 
 export const Navigation = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -26,9 +26,5 @@ export const Navigation = () => {
         </Button>
       )}
     </Box>
-    // <>
-    //   <NavLink to="/">Home</NavLink>
-    //   {isLoggedIn && <NavLink to="/contacts">Contacts</NavLink>}
-    // </>
   );
 };

@@ -2,8 +2,6 @@ import { Button, TextField } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/authOperations';
 
-// import css from './RegisterForm.module.css';
-
 export const SignUpForm = () => {
   const dispatch = useDispatch();
 

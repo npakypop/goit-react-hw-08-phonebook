@@ -1,5 +1,3 @@
-// import { Container, Toolbar } from '@mui/material';
-// import Bar from '@mui/material/AppBar';
 import { AppBar, Container } from '@mui/material';
 import { AuthNav } from 'components/AuthNav/AuthNav';
 import { Navigation } from 'components/Navigation/Navigation';
@@ -24,25 +22,5 @@ export const Header = () => {
         {isLoggedIn ? <UserMenu /> : <AuthNav />}
       </Container>
     </AppBar>
-    // <Bar position="static">
-    //   <Container
-    //     maxWidth="lg"
-    //     sx={{
-    //       textTransform: 'uppercase',
-    //       mt: '16px',
-    //       mb: '16px',
-    //     }}
-    //   >
-    //     <Toolbar
-    //       sx={{
-    //         justifyContent: 'space-between',
-    //         flexWrap: 'wrap',
-    //       }}
-    //     >
-    //       <Navigation />
-    //       {isLoggedIn ? <UserMenu /> : <AuthNav />}
-    //     </Toolbar>
-    //   </Container>
-    // </Bar>
   );
 };
