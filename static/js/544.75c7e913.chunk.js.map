@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/544.75c7e913.chunk.js","mappings":"iKAOA,UAPa,WACX,OACE,+BACE,gDAGL,C","sources":["pages/Home/Home.jsx"],"sourcesContent":["const Home = () => {\n  return (\n    <>\n      <h1>Zdarti Pozhaluista</h1>\n    </>\n  );\n};\nexport default Home;\n"],"names":[],"sourceRoot":""}
