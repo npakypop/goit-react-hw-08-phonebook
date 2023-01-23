@@ -4,6 +4,7 @@ import { Contact } from '../Contact/Contact';
 import { deleteContact } from 'redux/contacts/contactsOperations';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectItems, selectFilterValue } from 'redux/selectors';
+import { Box, Container, Typography } from '@mui/material';
 
 export const ContactList = () => {
   const filterValue = useSelector(selectFilterValue);
@@ -27,20 +28,26 @@ export const ContactList = () => {
   const filteredContacts = getFilteredContacts();
 
   return (
-    <>
-      <h2>Contacts</h2>
-      <ul>
-        {filteredContacts.map(({ id, name, number }) => (
-          <Contact
-            key={id}
-            id={id}
-            name={name}
-            phone={number}
-            onDeleteContact={onDeleteContact}
-          />
-        ))}
-      </ul>
-    </>
+    <Container>
+      <Typography component="h2" sx={{ mb: '10px', fontSize: '20px' }}>
+        Contacts
+      </Typography>
+      {items.length <= 0 ? (
+        <Typography component="p">Your phonebook is empty</Typography>
+      ) : (
+        <Box component="ul">
+          {filteredContacts.map(({ id, name, number }) => (
+            <Contact
+              key={id}
+              id={id}
+              name={name}
+              phone={number}
+              onDeleteContact={onDeleteContact}
+            />
+          ))}
+        </Box>
+      )}
+    </Container>
   );
 };
 

@@ -1,11 +1,14 @@
+import { Container, Typography } from '@mui/material';
 import { LoginForm } from 'components/LogInForm/LogInForm';
 
 const Login = () => {
   return (
-    <div>
-      <h2>Login</h2>
+    <Container sx={{ pt: '40px' }}>
+      <Typography component="h2" sx={{ textAlign: 'center', mb: '20px' }}>
+        Login
+      </Typography>
       <LoginForm />
-    </div>
+    </Container>
   );
-}
+};
 export default Login;

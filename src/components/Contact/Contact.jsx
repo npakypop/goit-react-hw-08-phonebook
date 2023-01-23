@@ -1,19 +1,27 @@
+import { Box, Button, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 // import { Item, Info, Button } from './Contact.styled';
 
 export const Contact = ({ name, phone, id, onDeleteContact }) => {
   return (
-    <li>
-      <p>
+    <Box component="li">
+      <Typography>
         <strong>Name: </strong>
         {name}
-      </p>
-      <p>
+      </Typography>
+      <Typography>
         <strong>Phone: </strong>
         {phone}
-      </p>
-      <button onClick={() => onDeleteContact(id)}>Delete contact</button>
-    </li>
+      </Typography>
+      <Button
+        size="small"
+        onClick={() => onDeleteContact(id)}
+        variant="contained"
+        color="secondary"
+      >
+        Delete contact
+      </Button>
+    </Box>
   );
 };
 

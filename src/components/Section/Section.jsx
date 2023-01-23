@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import { Wrapper } from './Section.styled.js';
+import { Box } from '@mui/material';
 
 export const Section = ({ children }) => {
-  return <Wrapper>{children}</Wrapper>;
+  return <Box sx={{ p: '20px 40px' }}>{children}</Box>;
 };
 
 Section.propTypes = {

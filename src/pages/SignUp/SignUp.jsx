@@ -1,11 +1,14 @@
+import { Container, Typography } from '@mui/material';
 import { SignUpForm } from 'components/SignUpForm/SignUpForm';
 
 const SignUp = () => {
   return (
-    <div>
-      <h2>SignUp</h2>
+    <Container sx={{ pt: '40px' }}>
+      <Typography component="h2" sx={{ textAlign: 'center', mb: '20px' }}>
+        SignUp
+      </Typography>
       <SignUpForm />
-    </div>
+    </Container>
   );
 };
 export default SignUp;
