@@ -1,7 +1,7 @@
 const Home = () => {
   return (
     <>
-      <h1>well come back mazafuka</h1>
+      <h1>Zdarti Pozhaluista</h1>
     </>
   );
 };
