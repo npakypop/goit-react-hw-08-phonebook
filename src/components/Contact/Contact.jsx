@@ -4,7 +4,15 @@ import PropTypes from 'prop-types';
 
 export const Contact = ({ name, phone, id, onDeleteContact }) => {
   return (
-    <Box component="li">
+    <Box
+      component="li"
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '5px',
+        mb: '10px',
+      }}
+    >
       <Typography>
         <strong>Name: </strong>
         {name}

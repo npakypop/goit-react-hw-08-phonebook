@@ -4,22 +4,19 @@ import { SearchForm } from '../../components/SearchForm/SearchForm';
 import { ContactList } from '../../components/ContactList/ContactList';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchContacts } from 'redux/contacts/contactsOperations';
-import { selectIsLoading, selectError, selectItems } from 'redux/selectors';
+import { selectIsLoading, selectError } from 'redux/selectors';
 import { useEffect } from 'react';
 import { Container } from '@mui/material';
 import { Loader } from 'components/Loader/Loader';
-import { toast } from 'react-hot-toast';
 
 const Contacts = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  const items = useSelector(selectItems);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
-  const notify = () => toast('Here is your toast.');
 
   return (
     <Container sx={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -31,7 +28,7 @@ const Contacts = () => {
       </Section>
       <Section>
         {isLoading && <Loader />}
-        {error && { notify }}
+        {error && <p>{error}</p>}
         <ContactList />
       </Section>
     </Container>

@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import { Oval, ThreeDots } from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner';
 
 export const Loader = () => {
   return (
@@ -14,18 +14,6 @@ export const Loader = () => {
         wrapperClassName=""
         visible={true}
       />
-      {/* <Oval
-        height={20}
-        width={20}
-        color="#BF3F92"
-        wrapperStyle={{}}
-        wrapperClass=""
-        visible={true}
-        ariaLabel="oval-loading"
-        secondaryColor="#BEBEBE"
-        strokeWidth={2}
-        strokeWidthSecondary={2}
-      /> */}
     </Box>
   );
 };
