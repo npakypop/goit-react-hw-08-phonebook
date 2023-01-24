@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
 
 export const Section = ({ children }) => {
-  return <Box sx={{ p: '20px 40px' }}>{children}</Box>;
+  return <Box sx={{ p: '20px 40px', position: 'relative' }}>{children}</Box>;
 };
 
 Section.propTypes = {

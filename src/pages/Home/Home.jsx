@@ -1,8 +1,17 @@
+import { Container, Typography } from '@mui/material';
+
 const Home = () => {
   return (
-    <>
-      <h1>Zdarti Pozhaluista</h1>
-    </>
+    <Container>
+      <Typography
+        component="h2"
+        align="center"
+        variant="h2"
+        sx={{ mt: '40px' }}
+      >
+        Zdrasti Pozhaluista
+      </Typography>
+    </Container>
   );
 };
 export default Home;

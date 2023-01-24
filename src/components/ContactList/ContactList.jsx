@@ -27,9 +27,6 @@ export const ContactList = () => {
 
   return (
     <Container>
-      <Typography component="h2" sx={{ mb: '10px', fontSize: '20px' }}>
-        Contacts
-      </Typography>
       {items.length <= 0 ? (
         <Typography component="p">Your phonebook is empty</Typography>
       ) : (

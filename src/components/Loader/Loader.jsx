@@ -3,7 +3,17 @@ import { ThreeDots } from 'react-loader-spinner';
 
 export const Loader = () => {
   return (
-    <Box sx={{ position: 'absolute' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        top: '115px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+      }}
+    >
       <ThreeDots
         height="25"
         width="50"

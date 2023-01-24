@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contacts/contactsOperations';
-// import { Title, Form, Input, Button, Label } from './AddForm.styled';
-import { selectItems } from 'redux/selectors';
+import toast, { Toaster } from 'react-hot-toast';
+import { TextField, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import { Container } from '@mui/system';
-import { TextField, Typography } from '@mui/material';
+import { addContact } from 'redux/contacts/contactsOperations';
+import { selectItems } from 'redux/selectors';
 
 export const AddForm = () => {
   const [name, setName] = useState('');
@@ -36,7 +36,9 @@ export const AddForm = () => {
 
   const onFormSubmit = contact => {
     if (items.some(el => el.name === contact.name)) {
-      alert(`Contact with name ${contact.name} already exists`);
+      toast.error(`Contact with name ${contact.name} already exists`, {
+        duration: 1500,
+      });
       return;
     }
     const newContact = {
@@ -44,6 +46,8 @@ export const AddForm = () => {
       number: contact.number,
     };
     const action = addContact(newContact);
+    console.log(addContact());
+
     dispatch(action);
   };
 
@@ -80,6 +84,7 @@ export const AddForm = () => {
         <Button variant="contained" type="submit" color="primary">
           Add Contact
         </Button>
+        <Toaster />
       </form>
     </Container>
   );

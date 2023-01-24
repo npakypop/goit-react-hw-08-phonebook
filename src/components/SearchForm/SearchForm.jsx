@@ -12,9 +12,9 @@ export const SearchForm = () => {
     dispatch(filterContacts(value));
   };
   return (
-    <Container>
+    <Container sx={{ mb: '20px' }}>
       <Typography component="h2" sx={{ mb: '10px', fontSize: '20px' }}>
-        Search
+        Contacts
       </Typography>
       <TextField
         disabled={items.length <= 0 && true}
@@ -26,6 +26,7 @@ export const SearchForm = () => {
         value={filterValue}
         type="text"
         name="name"
+        autoComplete="off"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
       />

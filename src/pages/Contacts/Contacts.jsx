@@ -8,6 +8,7 @@ import { selectIsLoading, selectError } from 'redux/selectors';
 import { useEffect } from 'react';
 import { Container } from '@mui/material';
 import { Loader } from 'components/Loader/Loader';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Contacts = () => {
   const isLoading = useSelector(selectIsLoading);
@@ -18,18 +19,22 @@ const Contacts = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
+  useEffect(() => {
+    if (error !== null) {
+      toast.error(`${error}`);
+    }
+  }, [error]);
+
   return (
-    <Container sx={{ display: 'flex', justifyContent: 'space-between' }}>
+    <Container sx={{ display: 'flex', justifyContent: 'start', gap: '40px' }}>
       <Section>
         <AddForm />
       </Section>
       <Section>
         <SearchForm />
-      </Section>
-      <Section>
         {isLoading && <Loader />}
-        {error && <p>{error}</p>}
         <ContactList />
+        <Toaster />
       </Section>
     </Container>
   );
