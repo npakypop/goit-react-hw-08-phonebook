@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgoit_react_hw_08_phonebook=self.webpackChunkgoit_react_hw_08_phonebook||[]).push([[544],{9544:function(e,n,t){t.r(n);var o=t(266),a=t(890),h=t(184);n.default=function(){return(0,h.jsx)(o.Z,{children:(0,h.jsx)(a.Z,{component:"h2",align:"center",variant:"h2",sx:{mt:"40px"},children:"Zdrasti Pozhaluista"})})}}}]);
+//# sourceMappingURL=544.3abda5ce.chunk.js.map
